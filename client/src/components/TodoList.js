@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TodoService from './TodoService';
+import TodoRow from './TodoRow';
 import axios from 'axios';
 
 class TodoList extends Component {
@@ -21,7 +22,7 @@ class TodoList extends Component {
     tabRow() {
         if (this.state.todos instanceof Array) {
             return this.state.todos.map(function (object, i) {
-                return <p>{object.title}</p>;
+                return <TodoRow obj={object} key={i} />;
             })
         }
     }
@@ -32,7 +33,6 @@ class TodoList extends Component {
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <td>No.</td>
                             <td>Task</td>
                         </tr>
                     </thead>
