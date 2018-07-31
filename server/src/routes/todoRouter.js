@@ -6,8 +6,8 @@ var todoRouter = express.Router();
 var Todo = require('../models/Todo');
 
 // Create new task route
-todoRouter.route('/create/post').post(function (req, res) {
-    var todo = new todo(req.body);
+todoRouter.route('/add/post').post(function (req, res) {
+    var todo = new Todo(req.body);
     todo.save()
         .then(todo => {
             res.json('Todo created successfully');
@@ -15,6 +15,18 @@ todoRouter.route('/create/post').post(function (req, res) {
         .catch(err => {
             res.status(400).send("unable to save to database");
         });
+});
+
+// Get tasks route
+todoRouter.route('/').get(function (req, res) {
+    Todo.find(function (err, todos) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.json(todos);
+        }
+    });
 });
 
 module.exports = todoRouter;

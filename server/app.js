@@ -22,7 +22,7 @@ mongoose.connect(dbcreds)
     });
 
 // Required application specific custom router module
-var todoRouter = require('./src/routes/todoRouter');
+var todoRouter = require('./src/routes/TodoRouter');
 
 // Use middlewares to set view engine and post json data to the server
 app.use(express.static('public'));
