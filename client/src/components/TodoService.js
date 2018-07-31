@@ -3,8 +3,8 @@ import axios from 'axios';
 class TodoService {
 
     sendData(data) {
-        axios.post('http://localhost:4200/todos/create/post', {
-            item: data
+        axios.post('http://localhost:4200/todos/add/post', {
+            title: data.title
         })
         .then(function (response) {
            console.log(response);

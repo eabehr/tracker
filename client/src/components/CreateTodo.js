@@ -5,7 +5,7 @@ class CreateTodo extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { value: '' }
+        this.state = { title: '' }
         this.todoService = new TodoService();
 
 
@@ -14,13 +14,12 @@ class CreateTodo extends Component {
     }
 
     handleChange(event) {
-        this.setState({ value: event.target.value });
+        this.setState({ title: event.target.value });
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        this.todoService.sendData(this.state.value);
-        this.props.history.push('/');
+        this.todoService.sendData(this.state);
     }
 
     render() {
@@ -28,7 +27,7 @@ class CreateTodo extends Component {
             <div className="container">
                 <form onSubmit={this.handleSubmit}>
                     <label> Create ToDo:
-                        <input type="text" value={this.state.value} onChange={this.handleChange} className="form-control" />
+                        <input type="text" value={this.state.title} onChange={this.handleChange} className="form-control" />
                     </label><br />
                     <input type="submit" value="Submit" className="btn btn-primary" />
                 </form>
